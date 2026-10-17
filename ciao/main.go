@@ -8,7 +8,9 @@ package main //questo dichiara che il programma fa parte del package main,
 // il comando run ha eseguito il programma dopo averlo compilato.
 // GO è infatti un linguaggio compilato, con tempi di build rapidissimi
 //
-import "fmt" //package format, che contiene le funzioni di stampa
+import (
+	"fmt" //package format, che contiene le funzioni di stampa
+)
 
 func main() { //quando crei una funzione, la graffa di apertura deve essere sulla stessa riga di dichiarazione
 	fmt.Println("hello world!") //non è previsto ';'
@@ -137,4 +139,49 @@ func main() { //quando crei una funzione, la graffa di apertura deve essere sull
 		fmt.Println(key, val)
 	}
 
+	// 5. CONTROL STATEMENTS [ IF-ELSE,SWITCH,DEFER]
+	temperature := 22
+	if temperature > 10 {
+		fmt.Println("Cold")
+	} else if temperature > 30 {
+		fmt.Println("Hot")
+	} else {
+		fmt.Println("Perfect!")
+	}
+
+	//l'if può anche avere uno short statement che consiste nell'avere una variabile
+	//usata nelle condizioni e in tutte le istruzioni di tutti i controlli
+	kelvin := 295
+	if celsius := kelvin - 273; temperature > 10 {
+		fmt.Println("Cold")
+		fmt.Println(celsius)
+	} else if celsius > 30 {
+		fmt.Println("Hot")
+		fmt.Println(celsius)
+	} else {
+		fmt.Println("Perfect!")
+		fmt.Println(celsius)
+	}
+
+	//switch
+	color := "yellow"
+	switch color {
+	case "red":
+		fmt.Println("Stop")
+	case "yellow":
+		fmt.Println("Caution...")
+	case "green":
+		fmt.Println("Go")
+	default:
+		fmt.Println("???")
+	}
+
+	//defer, serve a posticipare l'esecuzione di una funzione citata
+	defer fmt.Println("Chiudi file.")
+	fmt.Println("Apri file")
+	fmt.Println("Leggi file")
+	//dato che il defer in questo caso si trova nella funzione main,
+	//dopo aver eseguito tutto, esegue il defer, e la stampa si trovera alla fine
+
+	// 6. FUNCTION
 }
